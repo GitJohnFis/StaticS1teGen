@@ -125,15 +125,16 @@ def test_to_html_with_props(self):
         "div",
         [
             LeafNode("span", "Text"),         
-        ]
-        {"class": "container", "id": "main"},     
+        ], # add a comma here 
+        {"class": "container", "id": "main"}  
     )
     self.assertEqual(
-        parent_wwith_props.to_html(),
+        parent_with_props.to_html(),
         '<div class="container" id="main"><span>Text</span></div>',
     )
 
- # test nested structures with multiple levels
+
+   # test nested structures with multiple levels
     children_with_props = ParentNode(
         "ul",
         [
