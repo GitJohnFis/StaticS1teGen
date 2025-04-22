@@ -73,7 +73,7 @@ class TestHTMLNode(unittest.TestCase):
         node = ParentNode(
             "p",
             [
-                LeafNode("p", "Bold Text"),
+                LeafNode("b", "Bold Text"),
                 LeafNode(None, "Normal Text"),
                 LeafNode("i", "Italic Text"),
                 LeafNode(None, "Normal Text"),
@@ -88,7 +88,7 @@ class TestHTMLNode(unittest.TestCase):
         node = ParentNode(
             "h2",
             [
-                LeafNode("p", "Bold Text"),
+                LeafNode("b", "Bold Text"),
                 LeafNode(None, "Normal Text"),
                 LeafNode("i", "Italic Text"),
                 LeafNode(None, "Normal Text"),
@@ -98,6 +98,27 @@ class TestHTMLNode(unittest.TestCase):
             node.to_html(),
             "<h2><b>Bold Text</b></p>Normal Text<i>Italic Text</i>Normal Text</h2>",
         )
+
+    def test_to_html_mixed_children(self):
+        node = ParentNode(
+             "div",
+            [
+             LeafNode("span", "Text"),
+             ParentNode(
+                "p",
+                [
+                    LeafNode("a", "Link"),
+                    LeafNode("b", "Bold Text"),
+                    LeafNode("img", "Image"),
+                    LeafNode("b", "Bold Text"),
+                ],
+            )  
+        ]
+    )
+    self.assertEqual(
+        node.to_html(),
+        "<div><span>Text</span><p><a>Link</a><b>Bold Text</b><img>Image</img><b>Bold Text</b></p></div>",
+    )
 
 if __name__ == "__main__":
     unittest.main()
