@@ -120,5 +120,38 @@ class TestHTMLNode(unittest.TestCase):
         "<div><span>Text</span><p><a>Link</a><b>Bold Text</b><img>Image</img><b>Bold Text</b></p></div>",
     )
 
+def test_to_html_with_props(self):
+    parent_with_props = ParentNode(
+        "div",
+        [
+            LeafNode("span", "Text"),         
+        ]
+        {"class": "container", "id": "main"},     
+    )
+    self.assertEqual(
+        parent_wwith_props.to_html(),
+        '<div class="container" id="main"><span>Text</span></div>',
+    )
+
+ # test nested structures with multiple levels
+    children_with_props = ParentNode(
+        "ul",
+        [
+            LeafNode("li", "Item 1",
+            {"class": "list-item"})
+        ],
+        complex_node = ParentNode(
+            "div",
+            [
+                LeafNode("h1", "Title"),
+                children_with_props,    
+            ],
+            {"id": "content"}
+        )
+        self.assertEqual(
+            complex_node.to_html(),
+            '<div id="content"><h1>Title</h1><ul><li class="list-item">Item 1</li></ul></div>',
+        )
+    )
 if __name__ == "__main__":
     unittest.main()
