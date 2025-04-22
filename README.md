@@ -1,7 +1,7 @@
 # StaticS1teGen
 &lt;blockquote>&lt;em>"It is what it is"&lt;/em>&lt;/blockquote>
 
-# **Cheat Sheet**
+# **Cheat Sheet** (My eyes only)
 This cheat sheet provides a quick reference for all the HTML and Markdown syntax you'll need to complete this project. Feel free to bookmark this page or open it in another tab so you can come back to it as you work on this project.
 
 References
