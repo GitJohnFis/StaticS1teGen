@@ -2,22 +2,22 @@ import unittest
 from htmlnode import HTMLNode
 
 class TestHTMLNode(unittest.TestCase):
-    def test_to_htmnl_props(self):
+    def test_to_html_props(self):
         node = HTMLNode("div", "Hello World!", None, {"class": "greeting", "href": "https://www.google.com","target": "_blank"}
-    )
-    self.assertEqual(
+        )
+         self.assertEqual(
         node.props_to_html(),
         ' class="greeting" href="https://www.google.com" target="_blank"',
-    )
+        )
 
     def test_values(self):
         node = HTMLNode("div", "I wish I could read",
         )
-        self.assertEqual(
+         self.assertEqual(
             node.tag,
             "div",
         )
-        self.assertEqual(
+         self.assertEqual(
             node.value,
             "I wish I could read",
         )
@@ -26,13 +26,10 @@ class TestHTMLNode(unittest.TestCase):
             None,
         )
         self.assertEqual(
-            node.attributes,
-            None,
-        )
-        self.assertEqual(
             node.props,
             None,
         )
+
     def test_repr(self):
         node = HTMLNode(
             "p",
@@ -40,9 +37,9 @@ class TestHTMLNode(unittest.TestCase):
             None,
             {"class": "primary"},
         )
-        self.assertEqual(
+         self.assertEqual(
             node.__repr__(),
-            "HTMLNode(p, what a strange world, children: None,{'class': 'primary'})"
+            "HTMLNode(p, what a strange world, children: None,{'class': 'primary'})",
         )
 
 
