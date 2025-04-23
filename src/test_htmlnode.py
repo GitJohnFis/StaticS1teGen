@@ -8,7 +8,7 @@ class TestHTMLNode(unittest.TestCase):
         )
         self.assertEqual(
         node.props_to_html(),
-        ' class="greeting" href="https://www.google.com" target="_blank"',
+        'class="greeting" href="https://www.google.com" target="_blank"',
         )
 
     def test_values(self):
@@ -100,26 +100,28 @@ class TestHTMLNode(unittest.TestCase):
             "<h2><b>Bold Text</b>Normal Text<i>Italic Text</i>Normal Text</h2>",
         )
 
-    def test_to_html_mixed_children(self):
-        node = ParentNode(
-             "div",
+def test_to_html_mixed_children(self):
+    node = ParentNode(
+         "div",
+        [
+         LeafNode("span", "Text"),
+         ParentNode(
+            "p",
             [
-             LeafNode("span", "Text"),
-             ParentNode(
-                "p",
-                [
-                    LeafNode("a", "Link"),
-                    LeafNode("b", "Bold Text"),
-                    LeafNode("img", "Image"),
-                    LeafNode("b", "Bold Text"),
-                ],
-            )  
+                LeafNode("a", "Link"),
+                LeafNode("b", "Bold Text"),
+                LeafNode("img", "Image"),
+                LeafNode("b", "Bold Text"),
+            ],
+        )  
         ]
-    )
+    ) 
+    
     self.assertEqual(
         node.to_html(),
         "<div><span>Text</span><p><a>Link</a><b>Bold Text</b><img>Image</img><b>Bold Text</b></p></div>",
     )
+    
     def test_to_html_with_props(self):
         parent_with_props = ParentNode(
             "div",

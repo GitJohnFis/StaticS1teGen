@@ -16,7 +16,7 @@ class TestTextNode(unittest.TestCase):
 
     def test_neq_false2(self):
         node = TextNode("This is a text node", TextType.TEXT)
-        node2 = TextNode("This is a text node", TextType.TEXT)
+        node2 = TextNode("This is a text node", TextType.ITALIC)
         self.assertNotEqual(node, node2)
 
     def test_eq_url(self):
